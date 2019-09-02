@@ -9,13 +9,12 @@ namespace Baccarat.Tools
 {
     class ImageOperator
     {
-        public void GetImageRgb(Image image, Int32 x, Int32 y, out Int32 r, out Int32 g, out Int32 b)
+        public static Color GetImageRgb(Image image, Int32 x, Int32 y)
         {
             Bitmap bitmap = new Bitmap(image);
             Color color = bitmap.GetPixel(x, y);
-            r = color.R;
-            g = color.G;
-            b = color.B;
+            bitmap.Dispose();
+            return color;
         }
     }
 }

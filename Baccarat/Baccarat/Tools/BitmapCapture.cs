@@ -20,6 +20,8 @@ namespace Baccarat.Tools
             WinApi.BitBlt(dc2, 0, 0, control.Width, control.Height, dc1, 0, 0, 0x00CC0020);
             g1.ReleaseHdc(dc1);
             g2.ReleaseHdc(dc2);
+            g1.Dispose();
+            g2.Dispose();
             return myImage;
         }
     }
