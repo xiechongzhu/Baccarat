@@ -31,6 +31,10 @@ namespace Baccarat
                 gameState = GameState.GAME_START;
                 gameResult = GameResult.RESULT_UNKNOW;
             }
+            else if(isEndImage(image, out gameResult))
+            {
+                gameState = GameState.GAME_END;
+            }
 
             image.Dispose();
             return new Tuple<GameState, GameResult>(gameState, gameResult);
@@ -38,6 +42,7 @@ namespace Baccarat
 
         private bool isStartImage(Image image)
         {
+            //用开局的"准备下注"黄色字体判断
             Color color;
             List<Color> colorList = new List<Color>();
             //389,216 ===>255,255,1
@@ -61,6 +66,34 @@ namespace Baccarat
                 }
             }
             return true;
+        }
+
+        private bool isEndImage(Image image, out GameResult gameResult)
+        {
+            gameResult = GameResult.RESULT_UNKNOW;
+            Color color;
+            color = ImageOperator.GetImageRgb(image, 86, 212);
+            if(color.B > 190)
+            {
+                gameResult = GameResult.PLAYER_WIN;
+                return true;
+            }
+
+            color = ImageOperator.GetImageRgb(image, 208, 214);
+            if(color.R > 200)
+            {
+                gameResult = GameResult.BANKER_WIN;
+                return true;
+            }
+
+            color = ImageOperator.GetImageRgb(image, 134, 214);
+            if(color.G > 100)
+            {
+                gameResult = GameResult.DRAW_GAME;
+                return true;
+            }
+
+            return false;
         }
     }
 }
