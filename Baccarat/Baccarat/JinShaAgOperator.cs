@@ -40,14 +40,14 @@ namespace Baccarat
         {
             Color color;
             List<Color> colorList = new List<Color>();
-            //391,224 ===>255,255,1
-            color = ImageOperator.GetImageRgb(image, 391, 224);
+            //389,216 ===>255,255,1
+            color = ImageOperator.GetImageRgb(image, 389, 216);
             colorList.Add(color);
-            //468,224 ===> 255,251,5
-            color = ImageOperator.GetImageRgb(image, 468, 224);
+            //448,215 ===> 255,251,5
+            color = ImageOperator.GetImageRgb(image, 448, 215);
             colorList.Add(color);
-            //393,225 ===> 246,247,0
-            color = ImageOperator.GetImageRgb(image, 393, 225);
+            //430,220 ===> 246,247,0
+            color = ImageOperator.GetImageRgb(image, 430, 220);
             colorList.Add(color);
 
             foreach(Color item in colorList)

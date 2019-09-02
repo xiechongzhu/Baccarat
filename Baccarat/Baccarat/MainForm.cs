@@ -45,7 +45,7 @@ namespace Baccarat
         {
             Image image = BitmapCapture.GetWindowCapture(panelWeb);
             SaveFileDialog dialog = new SaveFileDialog();
-            dialog.Filter = "位图(*.bmp)|*.bmp";
+            dialog.Filter = "JPEG图片(*.jpg)|*.jpg";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 image.Save(dialog.FileName);
@@ -54,6 +54,8 @@ namespace Baccarat
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Normal;
+            Size = new Size(800, 600);
             SubSiteForm subSiteForm = new SubSiteForm();
             subSiteForm.SetMainSite(mainSite);
             if(subSiteForm.ShowDialog() == DialogResult.OK)

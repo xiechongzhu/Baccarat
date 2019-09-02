@@ -49,9 +49,8 @@
             this.panelTool.Controls.Add(this.btnStart);
             this.panelTool.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTool.Location = new System.Drawing.Point(0, 0);
-            this.panelTool.Margin = new System.Windows.Forms.Padding(6);
             this.panelTool.Name = "panelTool";
-            this.panelTool.Size = new System.Drawing.Size(1574, 56);
+            this.panelTool.Size = new System.Drawing.Size(787, 28);
             this.panelTool.TabIndex = 0;
             // 
             // ContexMenuTool
@@ -60,20 +59,21 @@
             this.ContexMenuTool.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuItemCapture});
             this.ContexMenuTool.Name = "ContexMenuTool";
-            this.ContexMenuTool.Size = new System.Drawing.Size(137, 42);
+            this.ContexMenuTool.Size = new System.Drawing.Size(101, 26);
             // 
             // MenuItemCapture
             // 
             this.MenuItemCapture.Name = "MenuItemCapture";
-            this.MenuItemCapture.Size = new System.Drawing.Size(136, 38);
+            this.MenuItemCapture.Size = new System.Drawing.Size(100, 22);
             this.MenuItemCapture.Text = "截图";
             this.MenuItemCapture.Click += new System.EventHandler(this.MenuItemCapture_Click);
             // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(1451, 7);
+            this.btnLog.Location = new System.Drawing.Point(726, 4);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(111, 44);
+            this.btnLog.Size = new System.Drawing.Size(56, 22);
             this.btnLog.TabIndex = 2;
             this.btnLog.Text = "日志";
             this.btnLog.UseVisualStyleBackColor = true;
@@ -82,10 +82,9 @@
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(170, 4);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(6);
+            this.btnStop.Location = new System.Drawing.Point(85, 2);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(150, 46);
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "停止";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -93,10 +92,9 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(6, 6);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(6);
+            this.btnStart.Location = new System.Drawing.Point(3, 3);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(150, 46);
+            this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "开始";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -105,10 +103,10 @@
             // panelWeb
             // 
             this.panelWeb.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelWeb.Location = new System.Drawing.Point(0, 56);
+            this.panelWeb.Location = new System.Drawing.Point(0, 28);
             this.panelWeb.Margin = new System.Windows.Forms.Padding(0);
             this.panelWeb.Name = "panelWeb";
-            this.panelWeb.Size = new System.Drawing.Size(1574, 1100);
+            this.panelWeb.Size = new System.Drawing.Size(787, 502);
             this.panelWeb.TabIndex = 1;
             // 
             // ImageCapTimer
@@ -117,18 +115,18 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1574, 1156);
+            this.ClientSize = new System.Drawing.Size(787, 530);
             this.Controls.Add(this.panelWeb);
             this.Controls.Add(this.panelTool);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "百家乐";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelTool.ResumeLayout(false);
             this.ContexMenuTool.ResumeLayout(false);
             this.ResumeLayout(false);
