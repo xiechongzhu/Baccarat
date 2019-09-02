@@ -9,7 +9,7 @@ namespace Baccarat
 {
     class JinShaAgOperator : AbstractOperator
     {
-        JinShaAgOperator(MainForm mainForm) : base(mainForm)
+        public JinShaAgOperator(MainForm mainForm) : base(mainForm)
         {
 
         }
@@ -19,7 +19,7 @@ namespace Baccarat
             throw new NotImplementedException();
         }
 
-        public override Tuple<GameState, GameResult> ParseImage(Image image)
+        public override Tuple<GameState, GameResult> InternalParseImage(Image image)
         {
             throw new NotImplementedException();
         }

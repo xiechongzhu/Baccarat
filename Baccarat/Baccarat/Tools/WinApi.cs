@@ -55,5 +55,8 @@ namespace Baccarat.Tools
         int nYSrc,          // y-coordinate of source upper-left corner
         System.Int32 dwRop  // raster operation code
         );
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool SetProcessDPIAware();
     }
 }

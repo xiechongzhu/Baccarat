@@ -52,28 +52,73 @@ namespace Baccarat
         }
 
         delegate Tuple<GameState, GameResult> SendImageDelegate(Image image);
-        public void SendImageData(Image image)
+        public void ParseImage(Image image)
         {
-            SendImageDelegate d = new SendImageDelegate(ParseImage);
+            SendImageDelegate d = new SendImageDelegate(InternalParseImage);
             d.BeginInvoke(image, SendImageDataCallBack, null);
         }
-        void SendImageDataCallBack(IAsyncResult result)
+        protected void SendImageDataCallBack(IAsyncResult result)
         {
             AsyncResult asyncResult = (AsyncResult)result;
             SendImageDelegate d = (SendImageDelegate)asyncResult.AsyncDelegate;
             Tuple<GameState, GameResult> retVal = d.EndInvoke(result);
+            GameState currentGameState = retVal.Item1;
+            GameResult currentGameResult = retVal.Item2;
             if (isRunning)
             {
-                if (retVal.Item2 != GameResult.RESULT_UNKNOW)
+                switch(gameState)
                 {
-                    gameResultList.Add(retVal.Item2);
+                    case GameState.GAME_UNKNOW:
+                    case GameState.GAME_END:
+                        if(currentGameState == GameState.GAME_START)
+                        {
+                            gameState = currentGameState;
+                            SendLog("新的一局开始了");
+                        }
+                        break;
+                    case GameState.GAME_START:
+                        if(currentGameState == GameState.GAME_UNKNOW)
+                        {
+                            SendLog("可以开始下注了");
+                            gameState = GameState.GAME_GOING;
+                        }
+                        break;
+                    case GameState.GAME_GOING:
+                        if(currentGameState == GameState.GAME_END)
+                        {
+                            String logString = "本局结束,结果:";
+                            switch (currentGameResult)
+                            {
+                                case GameResult.RESULT_UNKNOW:
+                                    logString += "未知";
+                                    break;
+                                case GameResult.BANKER_WIN:
+                                    logString += "庄家胜";
+                                    break;
+                                case GameResult.DRAW_GAME:
+                                    logString += "平局";
+                                    break;
+                                case GameResult.PLAYER_WIN:
+                                    logString += "闲家胜";
+                                    break;
+                            }
+                            SendLog(logString);
+                            if (currentGameResult != GameResult.RESULT_UNKNOW)
+                            {
+                                gameResultList.Add(currentGameResult);
+                            }
+                            gameState = GameState.GAME_END;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }
 
         private MainForm mainForm;
         protected abstract void Bet(Int32 price);
-        public abstract Tuple<GameState, GameResult> ParseImage(Image image);
+        public abstract Tuple<GameState, GameResult> InternalParseImage(Image image);
         protected void BrowserClick(Int32 x, Int32 y)
         {
             mainForm.BrowserClick(x, y);
