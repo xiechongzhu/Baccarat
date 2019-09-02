@@ -73,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractOperator.cs" />
-    <Compile Include="BitMap.cs" />
     <Compile Include="JinShaAgOperator.cs" />
     <Compile Include="LogForm.cs">
       <SubType>Form</SubType>
@@ -104,6 +103,7 @@
       <DependentUpon>SubSiteForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\BitmapCapture.cs" />
+    <Compile Include="Tools\ImageOperator.cs" />
     <Compile Include="Tools\WinApi.cs" />
     <EmbeddedResource Include="LogForm.resx">
       <DependentUpon>LogForm.cs</DependentUpon>
