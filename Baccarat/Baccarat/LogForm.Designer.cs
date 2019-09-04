@@ -50,7 +50,7 @@
             // headerTime
             // 
             this.headerTime.Text = "时间";
-            this.headerTime.Width = 175;
+            this.headerTime.Width = 130;
             // 
             // headerContent
             // 

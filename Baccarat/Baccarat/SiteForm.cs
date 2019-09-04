@@ -16,21 +16,22 @@ namespace Baccarat
         {
             InitializeComponent();
             cbSite.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSite.Items.AddRange(SiteInfo.Instance().GetSiteNames().ToArray());
-            cbSite.SelectedIndex = 0;
+            cbSite.DisplayMember = "siteName";
+            cbSite.ValueMember = "site";
+            cbSite.DataSource = SiteInfo.Instance().GetMainSites();
+            
+            //cbSite.SelectedIndex = 0;
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            siteUrl = cbSite.SelectedItem.ToString();
+            mainSite = (ESite)cbSite.SelectedValue;
+            siteUrl = SiteInfo.Instance().mainSiteUrl(mainSite);
             Close();
         }
 
-        public String GetUrl()
-        {
-            return siteUrl;
-        }
+        public String siteUrl { get; set; }
 
-        private String siteUrl;
+        public ESite mainSite { get; set; }
     }
 }

@@ -22,9 +22,10 @@ namespace Baccarat
         public void SetMainSite(ESite mainSite)
         {
             this.mainSite = mainSite;
-            List<String> subNames = SiteInfo.Instance().GetSubSiteNames(mainSite);
-            cbSubSite.Items.AddRange(subNames.ToArray());
-            cbSubSite.SelectedIndex = 0;
+            List<SubSiteInfo> subSiteInfos = SiteInfo.Instance().GetSubSites(mainSite);
+            cbSubSite.DisplayMember = "siteName";
+            cbSubSite.ValueMember = "site";
+            cbSubSite.DataSource = subSiteInfos;
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
@@ -35,7 +36,7 @@ namespace Baccarat
 
         public ESubSite GetSubSite()
         {
-            return SiteInfo.Instance().GetSubSite(mainSite, cbSubSite.SelectedItem.ToString());
+            return (ESubSite)cbSubSite.SelectedValue;
         }
     }
 }

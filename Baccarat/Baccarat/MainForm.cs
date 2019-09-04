@@ -34,9 +34,9 @@ namespace Baccarat
 
             SiteForm siteForm = new SiteForm();
             siteForm.ShowDialog();
-            mainSite = SiteInfo.Instance().MainSite(siteForm.GetUrl());
-            browser.Load(siteForm.GetUrl());
-            Text = "百家乐-" + siteForm.GetUrl();
+            mainSite = siteForm.mainSite;
+            browser.Load(siteForm.siteUrl);
+            Text = "百家乐-" + siteForm.siteUrl;
         }
 
         private ChromiumWebBrowser browser = new ChromiumWebBrowser();
@@ -58,11 +58,12 @@ namespace Baccarat
             Size = new Size(800, 600);
             SubSiteForm subSiteForm = new SubSiteForm();
             subSiteForm.SetMainSite(mainSite);
-            if(subSiteForm.ShowDialog() == DialogResult.OK)
+            if(subSiteForm.ShowDialog() != DialogResult.OK)
             {
-                subSite = subSiteForm.GetSubSite();
+                return;
             }
-            switch(mainSite)
+            subSite = subSiteForm.GetSubSite();
+            switch (mainSite)
             {
                 case ESite.SIET_JINSHA:
                     switch(subSite)
@@ -130,13 +131,19 @@ namespace Baccarat
         {
             var host = browser.GetBrowser().GetHost();
             host.SendMouseClickEvent(x, y, MouseButtonType.Left, false, 1, CefEventFlags.None);
-            Thread.Sleep(500);
             host.SendMouseClickEvent(x, y, MouseButtonType.Left, true, 1, CefEventFlags.None);
         }
 
         private void BtnLog_Click(object sender, EventArgs e)
         {
-            logForm.Visible = !logForm.Visible;
+            logForm.Visible = true;
+            logForm.BringToFront();
+        }
+
+        private void BtnSetting_Click(object sender, EventArgs e)
+        {
+            CfgForm cfgForm = new CfgForm(mainSite);
+            cfgForm.ShowDialog();
         }
     }
 }

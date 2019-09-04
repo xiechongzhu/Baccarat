@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Baccarat
 {
-    enum GameResult
+    public enum GameResult
     {
         RESULT_UNKNOW,  //结果未知
         BANKER_WIN,     //庄家赢
@@ -17,7 +17,7 @@ namespace Baccarat
         DRAW_GAME       //平局
     }
 
-    enum GameState
+    public enum GameState
     {
         GAME_UNKNOW,    //未知
         GAME_GOING,     //正在进行
@@ -81,6 +81,7 @@ namespace Baccarat
                         {
                             SendLog("可以开始下注了");
                             gameState = GameState.GAME_GOING;
+                            Bet();
                         }
                         break;
                     case GameState.GAME_GOING:
@@ -117,7 +118,7 @@ namespace Baccarat
         }
 
         private MainForm mainForm;
-        protected abstract void Bet(Int32 price);
+        protected abstract void Bet();
         public abstract Tuple<GameState, GameResult> InternalParseImage(Image image);
         protected void BrowserClick(Int32 x, Int32 y)
         {

@@ -58,5 +58,10 @@ namespace Baccarat.Tools
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool SetProcessDPIAware();
+
+        [System.Runtime.InteropServices.DllImport("kernel32")]
+        public static extern long WritePrivateProfileString(string section, string key, string val, string filepath);
+        [System.Runtime.InteropServices.DllImport("kernel32")]
+        public static extern long GetPrivateProfileString(string section, string key, string def, StringBuilder retval, int size, string filepath);
     }
 }

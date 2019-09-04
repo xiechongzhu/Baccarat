@@ -16,17 +16,50 @@ namespace Baccarat
         AG_SITE         //AG女优厅
     }
 
+    class SubSiteInfo
+    {
+        public SubSiteInfo(String siteName, ESubSite site)
+        {
+            this.siteName = siteName;
+            this.site = site;
+        }
+        public String siteName { get; set; }
+        public ESubSite site { get; set; }
+    }
+
+    class MainSiteInfo
+    {
+        public MainSiteInfo(String siteName, ESite site, String configFile, String url)
+        {
+            this.siteName = siteName;
+            this.site = site;
+            this.configFile = configFile;
+            this.url = url;
+        }
+        public String siteName { get; set; }
+        public ESite site { get; set; }
+        public Dictionary<ESubSite, SubSiteInfo> subSites { get; set; }
+        public String configFile { get; set; }
+        public String url;
+    }
+
     class SiteInfo
     {
-        private Dictionary<String, ESite> siteMap = new Dictionary<string, ESite>();
-        private Dictionary<ESite, Dictionary<String, ESubSite>> subSiteMap = new Dictionary<ESite, Dictionary<String, ESubSite>>();
         private static SiteInfo _SiteInfo = new SiteInfo();
+        private Dictionary<ESite, MainSiteInfo> mainSites = new Dictionary<ESite, MainSiteInfo>();
+
+        private void Jinsha_Init()
+        {
+            MainSiteInfo mainSiteInfo = new MainSiteInfo("金沙", ESite.SIET_JINSHA, "./金沙.ini", "https://m.83361199.com");
+            mainSiteInfo.subSites = new Dictionary<ESubSite, SubSiteInfo>();
+            mainSiteInfo.subSites[ESubSite.AG_SITE] = new SubSiteInfo("AG女优厅", ESubSite.AG_SITE);
+            mainSites[ESite.SIET_JINSHA] = mainSiteInfo;
+        }
 
         private SiteInfo()
         {
-            siteMap["https://m.83361199.com"] = ESite.SIET_JINSHA;
-            subSiteMap[ESite.SIET_JINSHA] = new Dictionary<string, ESubSite>();
-            subSiteMap[ESite.SIET_JINSHA]["AG女优厅"] = ESubSite.AG_SITE;
+            //站点信息--金沙
+            Jinsha_Init();
         }
 
         public static SiteInfo Instance()
@@ -34,34 +67,24 @@ namespace Baccarat
             return _SiteInfo;
         }
 
-        public List<String> GetSiteNames()
+        public List<MainSiteInfo> GetMainSites()
         {
-            List<String> nameList = new List<string>();
-            foreach(var item in siteMap)
-            {
-                nameList.Add(item.Key);
-            }
-            return nameList;
+            return mainSites.Values.ToList<MainSiteInfo>();
         }
 
-        public List<String> GetSubSiteNames(ESite site)
+        public String mainSiteUrl(ESite site)
         {
-            List<String> nameList = new List<string>();
-            foreach (var item in subSiteMap[site])
-            {
-                nameList.Add(item.Key);
-            }
-            return nameList;
+            return mainSites[site].url;
         }
 
-        public ESite MainSite(String siteName)
+        public List<SubSiteInfo> GetSubSites(ESite mainSite)
         {
-            return siteMap[siteName];
+            return mainSites[mainSite].subSites.Values.ToList<SubSiteInfo>();
         }
 
-        public ESubSite GetSubSite(ESite mainSite, String subSiteName)
+        public String GetConfigFileName(ESite mainSite)
         {
-            return subSiteMap[mainSite][subSiteName];
+            return mainSites[mainSite].configFile;
         }
     }
 }

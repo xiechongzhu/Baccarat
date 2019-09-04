@@ -10,14 +10,29 @@ namespace Baccarat
 {
     class JinShaAgOperator : AbstractOperator
     {
+        private Dictionary<Int32, Point> chipPositions = new Dictionary<int, Point>();
+        private Dictionary<GameResult, Point> betPositions = new Dictionary<GameResult, Point>();
+
         public JinShaAgOperator(MainForm mainForm) : base(mainForm)
         {
+            //筹码位置
+            chipPositions[10] = new Point(600, 400);
+            chipPositions[50] = new Point(635, 400);
+            chipPositions[100] = new Point(670, 400);
+            chipPositions[500] = new Point(705, 400);
+            chipPositions[1000] = new Point(740, 400);
 
+            //下注“平局”的点击区域
+            betPositions[GameResult.DRAW_GAME] = new Point(411, 322);
+            //下注“庄家”的点击区域
+            betPositions[GameResult.BANKER_WIN] = new Point(414, 339);
+            //下注“闲家”的点击区域
+            betPositions[GameResult.PLAYER_WIN] = new Point(413, 365);
         }
 
-        protected override void Bet(int price)
+        protected override void Bet()
         {
-            throw new NotImplementedException();
+            
         }
 
         public override Tuple<GameState, GameResult> InternalParseImage(Image image)
