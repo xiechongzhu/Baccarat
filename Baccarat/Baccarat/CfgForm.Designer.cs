@@ -36,21 +36,36 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.JinShaCbChip5 = new System.Windows.Forms.ComboBox();
-            this.JinShaCbChip4 = new System.Windows.Forms.ComboBox();
-            this.JinShaCbChip3 = new System.Windows.Forms.ComboBox();
-            this.JinShaCbChip2 = new System.Windows.Forms.ComboBox();
-            this.JinShaCbChip1 = new System.Windows.Forms.ComboBox();
+            this.CbChip5 = new System.Windows.Forms.ComboBox();
+            this.CbChip4 = new System.Windows.Forms.ComboBox();
+            this.CbChip3 = new System.Windows.Forms.ComboBox();
+            this.CbChip2 = new System.Windows.Forms.ComboBox();
+            this.CbChip1 = new System.Windows.Forms.ComboBox();
             this.groupBoxBet = new System.Windows.Forms.GroupBox();
-            this.checkBoxWatch = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxReuslt1 = new System.Windows.Forms.ComboBox();
-            this.comboBoxReuslt2 = new System.Windows.Forms.ComboBox();
             this.comboBoxReuslt3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxReuslt2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxReuslt1 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.checkBoxWatch = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.comboBoxBetBanker = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.BetValueBanker = new System.Windows.Forms.NumericUpDown();
+            this.BetValuePlayer = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBoxBetPlayer = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.BetValueDrawGame = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBoxBetDrawGame = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBoxChip.SuspendLayout();
             this.groupBoxBet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValueBanker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValuePlayer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValueDrawGame)).BeginInit();
             this.SuspendLayout();
             // 
             // btnOk
@@ -80,11 +95,11 @@
             this.groupBoxChip.Controls.Add(this.label3);
             this.groupBoxChip.Controls.Add(this.label2);
             this.groupBoxChip.Controls.Add(this.label1);
-            this.groupBoxChip.Controls.Add(this.JinShaCbChip5);
-            this.groupBoxChip.Controls.Add(this.JinShaCbChip4);
-            this.groupBoxChip.Controls.Add(this.JinShaCbChip3);
-            this.groupBoxChip.Controls.Add(this.JinShaCbChip2);
-            this.groupBoxChip.Controls.Add(this.JinShaCbChip1);
+            this.groupBoxChip.Controls.Add(this.CbChip5);
+            this.groupBoxChip.Controls.Add(this.CbChip4);
+            this.groupBoxChip.Controls.Add(this.CbChip3);
+            this.groupBoxChip.Controls.Add(this.CbChip2);
+            this.groupBoxChip.Controls.Add(this.CbChip1);
             this.groupBoxChip.Location = new System.Drawing.Point(12, 12);
             this.groupBoxChip.Name = "groupBoxChip";
             this.groupBoxChip.Size = new System.Drawing.Size(939, 147);
@@ -137,48 +152,60 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "筹码1";
             // 
-            // JinShaCbChip5
+            // CbChip5
             // 
-            this.JinShaCbChip5.FormattingEnabled = true;
-            this.JinShaCbChip5.Location = new System.Drawing.Point(562, 46);
-            this.JinShaCbChip5.Name = "JinShaCbChip5";
-            this.JinShaCbChip5.Size = new System.Drawing.Size(121, 32);
-            this.JinShaCbChip5.TabIndex = 4;
+            this.CbChip5.FormattingEnabled = true;
+            this.CbChip5.Location = new System.Drawing.Point(562, 46);
+            this.CbChip5.Name = "CbChip5";
+            this.CbChip5.Size = new System.Drawing.Size(121, 32);
+            this.CbChip5.TabIndex = 4;
             // 
-            // JinShaCbChip4
+            // CbChip4
             // 
-            this.JinShaCbChip4.FormattingEnabled = true;
-            this.JinShaCbChip4.Location = new System.Drawing.Point(425, 46);
-            this.JinShaCbChip4.Name = "JinShaCbChip4";
-            this.JinShaCbChip4.Size = new System.Drawing.Size(121, 32);
-            this.JinShaCbChip4.TabIndex = 3;
+            this.CbChip4.FormattingEnabled = true;
+            this.CbChip4.Location = new System.Drawing.Point(425, 46);
+            this.CbChip4.Name = "CbChip4";
+            this.CbChip4.Size = new System.Drawing.Size(121, 32);
+            this.CbChip4.TabIndex = 3;
             // 
-            // JinShaCbChip3
+            // CbChip3
             // 
-            this.JinShaCbChip3.FormattingEnabled = true;
-            this.JinShaCbChip3.Location = new System.Drawing.Point(285, 46);
-            this.JinShaCbChip3.Name = "JinShaCbChip3";
-            this.JinShaCbChip3.Size = new System.Drawing.Size(121, 32);
-            this.JinShaCbChip3.TabIndex = 2;
+            this.CbChip3.FormattingEnabled = true;
+            this.CbChip3.Location = new System.Drawing.Point(285, 46);
+            this.CbChip3.Name = "CbChip3";
+            this.CbChip3.Size = new System.Drawing.Size(121, 32);
+            this.CbChip3.TabIndex = 2;
             // 
-            // JinShaCbChip2
+            // CbChip2
             // 
-            this.JinShaCbChip2.FormattingEnabled = true;
-            this.JinShaCbChip2.Location = new System.Drawing.Point(146, 46);
-            this.JinShaCbChip2.Name = "JinShaCbChip2";
-            this.JinShaCbChip2.Size = new System.Drawing.Size(121, 32);
-            this.JinShaCbChip2.TabIndex = 1;
+            this.CbChip2.FormattingEnabled = true;
+            this.CbChip2.Location = new System.Drawing.Point(146, 46);
+            this.CbChip2.Name = "CbChip2";
+            this.CbChip2.Size = new System.Drawing.Size(121, 32);
+            this.CbChip2.TabIndex = 1;
             // 
-            // JinShaCbChip1
+            // CbChip1
             // 
-            this.JinShaCbChip1.FormattingEnabled = true;
-            this.JinShaCbChip1.Location = new System.Drawing.Point(7, 46);
-            this.JinShaCbChip1.Name = "JinShaCbChip1";
-            this.JinShaCbChip1.Size = new System.Drawing.Size(121, 32);
-            this.JinShaCbChip1.TabIndex = 0;
+            this.CbChip1.FormattingEnabled = true;
+            this.CbChip1.Location = new System.Drawing.Point(7, 46);
+            this.CbChip1.Name = "CbChip1";
+            this.CbChip1.Size = new System.Drawing.Size(121, 32);
+            this.CbChip1.TabIndex = 0;
             // 
             // groupBoxBet
             // 
+            this.groupBoxBet.Controls.Add(this.BetValueDrawGame);
+            this.groupBoxBet.Controls.Add(this.label13);
+            this.groupBoxBet.Controls.Add(this.comboBoxBetDrawGame);
+            this.groupBoxBet.Controls.Add(this.label14);
+            this.groupBoxBet.Controls.Add(this.BetValuePlayer);
+            this.groupBoxBet.Controls.Add(this.label11);
+            this.groupBoxBet.Controls.Add(this.comboBoxBetPlayer);
+            this.groupBoxBet.Controls.Add(this.label12);
+            this.groupBoxBet.Controls.Add(this.BetValueBanker);
+            this.groupBoxBet.Controls.Add(this.label10);
+            this.groupBoxBet.Controls.Add(this.comboBoxBetBanker);
+            this.groupBoxBet.Controls.Add(this.label9);
             this.groupBoxBet.Controls.Add(this.comboBoxReuslt3);
             this.groupBoxBet.Controls.Add(this.comboBoxReuslt2);
             this.groupBoxBet.Controls.Add(this.comboBoxReuslt1);
@@ -188,15 +215,69 @@
             this.groupBoxBet.Controls.Add(this.checkBoxWatch);
             this.groupBoxBet.Location = new System.Drawing.Point(19, 165);
             this.groupBoxBet.Name = "groupBoxBet";
-            this.groupBoxBet.Size = new System.Drawing.Size(932, 246);
+            this.groupBoxBet.Size = new System.Drawing.Size(932, 434);
             this.groupBoxBet.TabIndex = 4;
             this.groupBoxBet.TabStop = false;
             this.groupBoxBet.Text = "下注";
             // 
+            // comboBoxReuslt3
+            // 
+            this.comboBoxReuslt3.Enabled = false;
+            this.comboBoxReuslt3.FormattingEnabled = true;
+            this.comboBoxReuslt3.Location = new System.Drawing.Point(573, 81);
+            this.comboBoxReuslt3.Name = "comboBoxReuslt3";
+            this.comboBoxReuslt3.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxReuslt3.TabIndex = 6;
+            // 
+            // comboBoxReuslt2
+            // 
+            this.comboBoxReuslt2.Enabled = false;
+            this.comboBoxReuslt2.FormattingEnabled = true;
+            this.comboBoxReuslt2.Location = new System.Drawing.Point(331, 81);
+            this.comboBoxReuslt2.Name = "comboBoxReuslt2";
+            this.comboBoxReuslt2.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxReuslt2.TabIndex = 5;
+            // 
+            // comboBoxReuslt1
+            // 
+            this.comboBoxReuslt1.Enabled = false;
+            this.comboBoxReuslt1.FormattingEnabled = true;
+            this.comboBoxReuslt1.Location = new System.Drawing.Point(95, 81);
+            this.comboBoxReuslt1.Name = "comboBoxReuslt1";
+            this.comboBoxReuslt1.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxReuslt1.TabIndex = 4;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(496, 84);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 24);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "第3局";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(255, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(70, 24);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "第2局";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "第1局";
+            // 
             // checkBoxWatch
             // 
             this.checkBoxWatch.AutoSize = true;
-            this.checkBoxWatch.Location = new System.Drawing.Point(23, 25);
+            this.checkBoxWatch.Location = new System.Drawing.Point(23, 41);
             this.checkBoxWatch.Name = "checkBoxWatch";
             this.checkBoxWatch.Size = new System.Drawing.Size(138, 28);
             this.checkBoxWatch.TabIndex = 0;
@@ -204,59 +285,134 @@
             this.checkBoxWatch.UseVisualStyleBackColor = true;
             this.checkBoxWatch.CheckedChanged += new System.EventHandler(this.CheckBoxWatch_CheckedChanged);
             // 
-            // label6
+            // label9
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 68);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 24);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "第1局";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(19, 141);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(214, 24);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "庄家赢,下一次下注";
             // 
-            // label7
+            // comboBoxBetBanker
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(255, 68);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 24);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "第2局";
+            this.comboBoxBetBanker.FormattingEnabled = true;
+            this.comboBoxBetBanker.Location = new System.Drawing.Point(239, 138);
+            this.comboBoxBetBanker.Name = "comboBoxBetBanker";
+            this.comboBoxBetBanker.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxBetBanker.TabIndex = 8;
             // 
-            // label8
+            // label10
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(496, 68);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 24);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "第3局";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(367, 145);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 24);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "金额";
             // 
-            // comboBoxReuslt1
+            // BetValueBanker
             // 
-            this.comboBoxReuslt1.Enabled = false;
-            this.comboBoxReuslt1.FormattingEnabled = true;
-            this.comboBoxReuslt1.Location = new System.Drawing.Point(95, 65);
-            this.comboBoxReuslt1.Name = "comboBoxReuslt1";
-            this.comboBoxReuslt1.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt1.TabIndex = 4;
+            this.BetValueBanker.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.BetValueBanker.Location = new System.Drawing.Point(436, 138);
+            this.BetValueBanker.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.BetValueBanker.Name = "BetValueBanker";
+            this.BetValueBanker.Size = new System.Drawing.Size(184, 35);
+            this.BetValueBanker.TabIndex = 10;
             // 
-            // comboBoxReuslt2
+            // BetValuePlayer
             // 
-            this.comboBoxReuslt2.Enabled = false;
-            this.comboBoxReuslt2.FormattingEnabled = true;
-            this.comboBoxReuslt2.Location = new System.Drawing.Point(331, 65);
-            this.comboBoxReuslt2.Name = "comboBoxReuslt2";
-            this.comboBoxReuslt2.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt2.TabIndex = 5;
+            this.BetValuePlayer.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.BetValuePlayer.Location = new System.Drawing.Point(436, 185);
+            this.BetValuePlayer.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.BetValuePlayer.Name = "BetValuePlayer";
+            this.BetValuePlayer.Size = new System.Drawing.Size(184, 35);
+            this.BetValuePlayer.TabIndex = 14;
             // 
-            // comboBoxReuslt3
+            // label11
             // 
-            this.comboBoxReuslt3.Enabled = false;
-            this.comboBoxReuslt3.FormattingEnabled = true;
-            this.comboBoxReuslt3.Location = new System.Drawing.Point(573, 65);
-            this.comboBoxReuslt3.Name = "comboBoxReuslt3";
-            this.comboBoxReuslt3.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt3.TabIndex = 6;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(367, 192);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(58, 24);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "金额";
+            // 
+            // comboBoxBetPlayer
+            // 
+            this.comboBoxBetPlayer.FormattingEnabled = true;
+            this.comboBoxBetPlayer.Location = new System.Drawing.Point(239, 185);
+            this.comboBoxBetPlayer.Name = "comboBoxBetPlayer";
+            this.comboBoxBetPlayer.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxBetPlayer.TabIndex = 12;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(19, 188);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(214, 24);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "闲家赢,下一次下注";
+            // 
+            // BetValueDrawGame
+            // 
+            this.BetValueDrawGame.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.BetValueDrawGame.Location = new System.Drawing.Point(436, 234);
+            this.BetValueDrawGame.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.BetValueDrawGame.Name = "BetValueDrawGame";
+            this.BetValueDrawGame.Size = new System.Drawing.Size(184, 35);
+            this.BetValueDrawGame.TabIndex = 18;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(367, 241);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(58, 24);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "金额";
+            // 
+            // comboBoxBetDrawGame
+            // 
+            this.comboBoxBetDrawGame.FormattingEnabled = true;
+            this.comboBoxBetDrawGame.Location = new System.Drawing.Point(239, 234);
+            this.comboBoxBetDrawGame.Name = "comboBoxBetDrawGame";
+            this.comboBoxBetDrawGame.Size = new System.Drawing.Size(121, 32);
+            this.comboBoxBetDrawGame.TabIndex = 16;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(43, 237);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(190, 24);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "平局,下一次下注";
             // 
             // CfgForm
             // 
@@ -278,6 +434,9 @@
             this.groupBoxChip.PerformLayout();
             this.groupBoxBet.ResumeLayout(false);
             this.groupBoxBet.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValueBanker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValuePlayer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BetValueDrawGame)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,11 +450,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox JinShaCbChip5;
-        private System.Windows.Forms.ComboBox JinShaCbChip4;
-        private System.Windows.Forms.ComboBox JinShaCbChip3;
-        private System.Windows.Forms.ComboBox JinShaCbChip2;
-        private System.Windows.Forms.ComboBox JinShaCbChip1;
+        private System.Windows.Forms.ComboBox CbChip5;
+        private System.Windows.Forms.ComboBox CbChip4;
+        private System.Windows.Forms.ComboBox CbChip3;
+        private System.Windows.Forms.ComboBox CbChip2;
+        private System.Windows.Forms.ComboBox CbChip1;
         private System.Windows.Forms.GroupBox groupBoxBet;
         private System.Windows.Forms.ComboBox comboBoxReuslt3;
         private System.Windows.Forms.ComboBox comboBoxReuslt2;
@@ -304,5 +463,17 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckBox checkBoxWatch;
+        private System.Windows.Forms.NumericUpDown BetValueDrawGame;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox comboBoxBetDrawGame;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown BetValuePlayer;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBoxBetPlayer;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown BetValueBanker;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBoxBetBanker;
+        private System.Windows.Forms.Label label9;
     }
 }

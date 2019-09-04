@@ -9,22 +9,6 @@ using System.Windows.Forms;
 
 namespace Baccarat
 {
-    public enum GameResult
-    {
-        RESULT_UNKNOW,  //结果未知
-        BANKER_WIN,     //庄家赢
-        PLAYER_WIN,     //闲家赢
-        DRAW_GAME       //平局
-    }
-
-    public enum GameState
-    {
-        GAME_UNKNOW,    //未知
-        GAME_GOING,     //正在进行
-        GAME_START,     //新的一局开始，可以开始下注了
-        GAME_END        //本局结束
-    }
-
     abstract class AbstractOperator
     {
         protected GameResult gameResult = GameResult.RESULT_UNKNOW;

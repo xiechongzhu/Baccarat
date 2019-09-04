@@ -11,12 +11,6 @@ using Baccarat.Tools;
 
 namespace Baccarat
 {
-    public class GameResultInfo
-    {
-        public GameResult result { get; set; }
-        public string Name { get; set; }
-    }
-
     public partial class CfgForm : Form
     {
         private ESite mainSite;
@@ -32,13 +26,13 @@ namespace Baccarat
 
         private void InitControlls()
         {
-            foreach(Control control in groupBoxChip.Controls)
+            foreach (Control control in groupBoxChip.Controls)
             {
-                if(control is ComboBox && control.Name.StartsWith("JinShaCbChip"))
+                if (control is ComboBox && control.Name.StartsWith("CbChip"))
                 {
                     ComboBox cb = (ComboBox)control;
                     cb.DropDownStyle = ComboBoxStyle.DropDownList;
-                    foreach(Int32 chip in chips)
+                    foreach (Int32 chip in chips)
                     {
                         cb.Items.Add(chip.ToString());
                     }
@@ -52,12 +46,27 @@ namespace Baccarat
             gameResultInfos.Add(new GameResultInfo { result = GameResult.DRAW_GAME, Name = "平局" });
             foreach (Control control in groupBoxBet.Controls)
             {
-                if(control is ComboBox && control.Name.StartsWith("comboBoxReuslt"))
+                if (control is ComboBox && control.Name.StartsWith("comboBoxReuslt"))
                 {
                     ComboBox cb = (ComboBox)control;
-                    cb.DataSource = gameResultInfos;
+                    cb.DataSource = new List<GameResultInfo>(gameResultInfos);
                     cb.ValueMember = "result";
                     cb.DisplayMember = "Name";
+                    cb.DropDownStyle = ComboBoxStyle.DropDownList;
+                }
+            }
+
+            List<Object> betList = new List<object> { new { Title = "庄家", Value = GameResult.BANKER_WIN},
+                new { Title = "闲家", Value = GameResult.PLAYER_WIN},  new { Title = "平局", Value = GameResult.DRAW_GAME}};
+            foreach (Control control in groupBoxBet.Controls)
+            {
+                if (control is ComboBox && control.Name.StartsWith("comboBoxBet"))
+                {
+                    ComboBox cb = (ComboBox)control;
+                    cb.DataSource = new List<Object>(betList);
+                    cb.ValueMember = "Value";
+                    cb.DisplayMember = "Title";
+                    cb.DropDownStyle = ComboBoxStyle.DropDownList;
                 }
             }
         }
@@ -85,25 +94,55 @@ namespace Baccarat
             String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite);
             StringBuilder sb = new StringBuilder();
             WinApi.GetPrivateProfileString("Chips", "Chip1", "10", sb, 255, configFileName);
-            JinShaCbChip1.Text = sb.ToString();
+            CbChip1.Text = sb.ToString();
             WinApi.GetPrivateProfileString("Chips", "Chip2", "10", sb, 255, configFileName);
-            JinShaCbChip2.Text = sb.ToString();
+            CbChip2.Text = sb.ToString();
             WinApi.GetPrivateProfileString("Chips", "Chip3", "10", sb, 255, configFileName);
-            JinShaCbChip3.Text = sb.ToString();
+            CbChip3.Text = sb.ToString();
             WinApi.GetPrivateProfileString("Chips", "Chip4", "10", sb, 255, configFileName);
-            JinShaCbChip4.Text = sb.ToString();
+            CbChip4.Text = sb.ToString();
             WinApi.GetPrivateProfileString("Chips", "Chip5", "10", sb, 255, configFileName);
-            JinShaCbChip5.Text = sb.ToString();
+            CbChip5.Text = sb.ToString();
+            WinApi.GetPrivateProfileString("Start", "Watch", "False", sb, 255, configFileName);
+            checkBoxWatch.Checked = bool.Parse(sb.ToString());
+            WinApi.GetPrivateProfileString("Start", "Round1", "BANKER_WIN", sb, 255, configFileName);
+            comboBoxReuslt1.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Start", "Round2", "BANKER_WIN", sb, 255, configFileName);
+            comboBoxReuslt2.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Start", "Round3", "BANKER_WIN", sb, 255, configFileName);
+            comboBoxReuslt3.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "BankerWinBet", "PLAYER_WIN", sb, 255, configFileName);
+            comboBoxBetBanker.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "PlayerWinBet", "BANKER_WIN", sb, 255, configFileName);
+            comboBoxBetPlayer.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "DrawGameBet", "DRAW_GAME", sb, 255, configFileName);
+            comboBoxBetDrawGame.SelectedValue = Enum.Parse(typeof(GameResult), sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "BankerWinValue", "0", sb, 255, configFileName);
+            BetValueBanker.Value = Int32.Parse(sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "PlayerWinValue", "0", sb, 255, configFileName);
+            BetValuePlayer.Value = Int32.Parse(sb.ToString());
+            WinApi.GetPrivateProfileString("Bet", "DrawGameValue", "0", sb, 255, configFileName);
+            BetValueDrawGame.Value = Int32.Parse(sb.ToString());
         }
 
         private void WriteConfig()
         {
             String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite);
-            WinApi.WritePrivateProfileString("Chips", "Chip1", JinShaCbChip1.Text, configFileName);
-            WinApi.WritePrivateProfileString("Chips", "Chip2", JinShaCbChip2.Text, configFileName);
-            WinApi.WritePrivateProfileString("Chips", "Chip3", JinShaCbChip3.Text, configFileName);
-            WinApi.WritePrivateProfileString("Chips", "Chip4", JinShaCbChip4.Text, configFileName);
-            WinApi.WritePrivateProfileString("Chips", "Chip5", JinShaCbChip5.Text, configFileName);
+            WinApi.WritePrivateProfileString("Chips", "Chip1", CbChip1.Text, configFileName);
+            WinApi.WritePrivateProfileString("Chips", "Chip2", CbChip2.Text, configFileName);
+            WinApi.WritePrivateProfileString("Chips", "Chip3", CbChip3.Text, configFileName);
+            WinApi.WritePrivateProfileString("Chips", "Chip4", CbChip4.Text, configFileName);
+            WinApi.WritePrivateProfileString("Chips", "Chip5", CbChip5.Text, configFileName);
+            WinApi.WritePrivateProfileString("Start", "Watch", checkBoxWatch.Checked.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Start", "Round1", comboBoxReuslt1.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Start", "Round2", comboBoxReuslt2.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Start", "Round3", comboBoxReuslt3.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "BankerWinBet", comboBoxBetBanker.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "BankerWinValue", BetValueBanker.Value.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "PlayerWinBet", comboBoxBetPlayer.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "PlayerWinValue", BetValuePlayer.Value.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "DrawGameBet", comboBoxBetDrawGame.SelectedValue.ToString(), configFileName);
+            WinApi.WritePrivateProfileString("Bet", "DrawGameValue", BetValueDrawGame.Value.ToString(), configFileName);
         }
 
         private void CheckBoxWatch_CheckedChanged(object sender, EventArgs e)
