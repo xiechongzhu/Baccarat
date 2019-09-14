@@ -39,6 +39,7 @@
             this.headerTime,
             this.headerContent});
             this.logList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.logList.Location = new System.Drawing.Point(0, 0);
             this.logList.MultiSelect = false;
             this.logList.Name = "logList";

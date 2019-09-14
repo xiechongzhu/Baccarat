@@ -35,6 +35,12 @@ namespace Baccarat
             gameResultList.Clear();
         }
 
+        protected void Stop()
+        {
+            Reset();
+            mainForm.Stop();
+        }
+
         delegate Tuple<GameState, GameResult> SendImageDelegate(Image image);
         public void ParseImage(Image image)
         {
@@ -88,11 +94,12 @@ namespace Baccarat
                                     break;
                             }
                             SendLog(logString);
-                            if (currentGameResult != GameResult.RESULT_UNKNOW)
+                            if (currentGameResult != GameResult.RESULT_UNKNOW && currentGameResult != GameResult.DRAW_GAME)
                             {
                                 gameResultList.Add(currentGameResult);
                             }
                             gameState = GameState.GAME_END;
+                            //在这里添加下注逻辑
                         }
                         break;
                     default:

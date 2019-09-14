@@ -42,37 +42,46 @@
             this.CbChip2 = new System.Windows.Forms.ComboBox();
             this.CbChip1 = new System.Windows.Forms.ComboBox();
             this.groupBoxBet = new System.Windows.Forms.GroupBox();
-            this.comboBoxReuslt3 = new System.Windows.Forms.ComboBox();
-            this.comboBoxReuslt2 = new System.Windows.Forms.ComboBox();
-            this.comboBoxReuslt1 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.checkBoxWatch = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBoxBetBanker = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.BetValueBanker = new System.Windows.Forms.NumericUpDown();
-            this.BetValuePlayer = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBoxBetPlayer = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.BetValueDrawGame = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBoxBetDrawGame = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnDel1 = new System.Windows.Forms.Button();
+            this.btnMod1 = new System.Windows.Forms.Button();
+            this.btnAdd1 = new System.Windows.Forms.Button();
+            this.BetListView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnDel2 = new System.Windows.Forms.Button();
+            this.btnMod2 = new System.Windows.Forms.Button();
+            this.btnAdd2 = new System.Windows.Forms.Button();
+            this.BetListView2 = new System.Windows.Forms.ListView();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnDel3 = new System.Windows.Forms.Button();
+            this.btnMod3 = new System.Windows.Forms.Button();
+            this.btnAdd3 = new System.Windows.Forms.Button();
+            this.BetListView3 = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.comboBoxMode = new System.Windows.Forms.ComboBox();
             this.groupBoxChip.SuspendLayout();
             this.groupBoxBet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValueBanker)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValuePlayer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValueDrawGame)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(675, 630);
+            this.btnOk.Location = new System.Drawing.Point(607, 842);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(114, 53);
+            this.btnOk.Size = new System.Drawing.Size(114, 52);
             this.btnOk.TabIndex = 1;
             this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -80,9 +89,9 @@
             // 
             // btnCancle
             // 
-            this.btnCancle.Location = new System.Drawing.Point(820, 630);
+            this.btnCancle.Location = new System.Drawing.Point(735, 842);
             this.btnCancle.Name = "btnCancle";
-            this.btnCancle.Size = new System.Drawing.Size(114, 53);
+            this.btnCancle.Size = new System.Drawing.Size(114, 52);
             this.btnCancle.TabIndex = 2;
             this.btnCancle.Text = "取消";
             this.btnCancle.UseVisualStyleBackColor = true;
@@ -102,7 +111,7 @@
             this.groupBoxChip.Controls.Add(this.CbChip1);
             this.groupBoxChip.Location = new System.Drawing.Point(12, 12);
             this.groupBoxChip.Name = "groupBoxChip";
-            this.groupBoxChip.Size = new System.Drawing.Size(939, 147);
+            this.groupBoxChip.Size = new System.Drawing.Size(837, 147);
             this.groupBoxChip.TabIndex = 3;
             this.groupBoxChip.TabStop = false;
             this.groupBoxChip.Text = "筹码金额";
@@ -194,231 +203,275 @@
             // 
             // groupBoxBet
             // 
-            this.groupBoxBet.Controls.Add(this.BetValueDrawGame);
-            this.groupBoxBet.Controls.Add(this.label13);
-            this.groupBoxBet.Controls.Add(this.comboBoxBetDrawGame);
-            this.groupBoxBet.Controls.Add(this.label14);
-            this.groupBoxBet.Controls.Add(this.BetValuePlayer);
-            this.groupBoxBet.Controls.Add(this.label11);
-            this.groupBoxBet.Controls.Add(this.comboBoxBetPlayer);
-            this.groupBoxBet.Controls.Add(this.label12);
-            this.groupBoxBet.Controls.Add(this.BetValueBanker);
-            this.groupBoxBet.Controls.Add(this.label10);
-            this.groupBoxBet.Controls.Add(this.comboBoxBetBanker);
-            this.groupBoxBet.Controls.Add(this.label9);
-            this.groupBoxBet.Controls.Add(this.comboBoxReuslt3);
-            this.groupBoxBet.Controls.Add(this.comboBoxReuslt2);
-            this.groupBoxBet.Controls.Add(this.comboBoxReuslt1);
-            this.groupBoxBet.Controls.Add(this.label8);
-            this.groupBoxBet.Controls.Add(this.label7);
             this.groupBoxBet.Controls.Add(this.label6);
-            this.groupBoxBet.Controls.Add(this.checkBoxWatch);
+            this.groupBoxBet.Controls.Add(this.tabControl1);
+            this.groupBoxBet.Controls.Add(this.comboBoxMode);
             this.groupBoxBet.Location = new System.Drawing.Point(19, 165);
             this.groupBoxBet.Name = "groupBoxBet";
-            this.groupBoxBet.Size = new System.Drawing.Size(932, 434);
+            this.groupBoxBet.Size = new System.Drawing.Size(830, 662);
             this.groupBoxBet.TabIndex = 4;
             this.groupBoxBet.TabStop = false;
             this.groupBoxBet.Text = "下注";
             // 
-            // comboBoxReuslt3
-            // 
-            this.comboBoxReuslt3.Enabled = false;
-            this.comboBoxReuslt3.FormattingEnabled = true;
-            this.comboBoxReuslt3.Location = new System.Drawing.Point(573, 81);
-            this.comboBoxReuslt3.Name = "comboBoxReuslt3";
-            this.comboBoxReuslt3.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt3.TabIndex = 6;
-            // 
-            // comboBoxReuslt2
-            // 
-            this.comboBoxReuslt2.Enabled = false;
-            this.comboBoxReuslt2.FormattingEnabled = true;
-            this.comboBoxReuslt2.Location = new System.Drawing.Point(331, 81);
-            this.comboBoxReuslt2.Name = "comboBoxReuslt2";
-            this.comboBoxReuslt2.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt2.TabIndex = 5;
-            // 
-            // comboBoxReuslt1
-            // 
-            this.comboBoxReuslt1.Enabled = false;
-            this.comboBoxReuslt1.FormattingEnabled = true;
-            this.comboBoxReuslt1.Location = new System.Drawing.Point(95, 81);
-            this.comboBoxReuslt1.Name = "comboBoxReuslt1";
-            this.comboBoxReuslt1.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxReuslt1.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(496, 84);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 24);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "第3局";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(255, 84);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 24);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "第2局";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 84);
+            this.label6.Location = new System.Drawing.Point(19, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 24);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "第1局";
+            this.label6.Size = new System.Drawing.Size(166, 24);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "选择识别模式:";
             // 
-            // checkBoxWatch
+            // tabControl1
             // 
-            this.checkBoxWatch.AutoSize = true;
-            this.checkBoxWatch.Location = new System.Drawing.Point(23, 41);
-            this.checkBoxWatch.Name = "checkBoxWatch";
-            this.checkBoxWatch.Size = new System.Drawing.Size(138, 28);
-            this.checkBoxWatch.TabIndex = 0;
-            this.checkBoxWatch.Text = "观察三局";
-            this.checkBoxWatch.UseVisualStyleBackColor = true;
-            this.checkBoxWatch.CheckedChanged += new System.EventHandler(this.CheckBoxWatch_CheckedChanged);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(23, 122);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(807, 527);
+            this.tabControl1.TabIndex = 7;
             // 
-            // label9
+            // tabPage1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(19, 141);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(214, 24);
-            this.label9.TabIndex = 7;
-            this.label9.Text = "庄家赢,下一次下注";
+            this.tabPage1.Controls.Add(this.btnDel1);
+            this.tabPage1.Controls.Add(this.btnMod1);
+            this.tabPage1.Controls.Add(this.btnAdd1);
+            this.tabPage1.Controls.Add(this.BetListView1);
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(791, 480);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "一局结果下注";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // comboBoxBetBanker
+            // btnDel1
             // 
-            this.comboBoxBetBanker.FormattingEnabled = true;
-            this.comboBoxBetBanker.Location = new System.Drawing.Point(239, 138);
-            this.comboBoxBetBanker.Name = "comboBoxBetBanker";
-            this.comboBoxBetBanker.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxBetBanker.TabIndex = 8;
+            this.btnDel1.Location = new System.Drawing.Point(682, 416);
+            this.btnDel1.Name = "btnDel1";
+            this.btnDel1.Size = new System.Drawing.Size(94, 42);
+            this.btnDel1.TabIndex = 6;
+            this.btnDel1.Text = "删除";
+            this.btnDel1.UseVisualStyleBackColor = true;
+            this.btnDel1.Click += new System.EventHandler(this.BtnDel1_Click);
             // 
-            // label10
+            // btnMod1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(367, 145);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(58, 24);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "金额";
+            this.btnMod1.Location = new System.Drawing.Point(582, 416);
+            this.btnMod1.Name = "btnMod1";
+            this.btnMod1.Size = new System.Drawing.Size(94, 42);
+            this.btnMod1.TabIndex = 5;
+            this.btnMod1.Text = "修改";
+            this.btnMod1.UseVisualStyleBackColor = true;
+            this.btnMod1.Click += new System.EventHandler(this.BtnMod1_Click);
             // 
-            // BetValueBanker
+            // btnAdd1
             // 
-            this.BetValueBanker.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.BetValueBanker.Location = new System.Drawing.Point(436, 138);
-            this.BetValueBanker.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.BetValueBanker.Name = "BetValueBanker";
-            this.BetValueBanker.Size = new System.Drawing.Size(184, 35);
-            this.BetValueBanker.TabIndex = 10;
+            this.btnAdd1.Location = new System.Drawing.Point(482, 416);
+            this.btnAdd1.Name = "btnAdd1";
+            this.btnAdd1.Size = new System.Drawing.Size(94, 42);
+            this.btnAdd1.TabIndex = 4;
+            this.btnAdd1.Text = "添加";
+            this.btnAdd1.UseVisualStyleBackColor = true;
+            this.btnAdd1.Click += new System.EventHandler(this.BtnAdd1_Click);
             // 
-            // BetValuePlayer
+            // BetListView1
             // 
-            this.BetValuePlayer.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.BetValuePlayer.Location = new System.Drawing.Point(436, 185);
-            this.BetValuePlayer.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.BetValuePlayer.Name = "BetValuePlayer";
-            this.BetValuePlayer.Size = new System.Drawing.Size(184, 35);
-            this.BetValuePlayer.TabIndex = 14;
+            this.BetListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.BetListView1.FullRowSelect = true;
+            this.BetListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.BetListView1.Location = new System.Drawing.Point(6, 6);
+            this.BetListView1.MultiSelect = false;
+            this.BetListView1.Name = "BetListView1";
+            this.BetListView1.Size = new System.Drawing.Size(779, 394);
+            this.BetListView1.TabIndex = 0;
+            this.BetListView1.UseCompatibleStateImageBehavior = false;
+            this.BetListView1.View = System.Windows.Forms.View.Details;
+            this.BetListView1.DoubleClick += new System.EventHandler(this.BetListView1_DoubleClick);
             // 
-            // label11
+            // columnHeader1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(367, 192);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 24);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "金额";
+            this.columnHeader1.Text = "结果";
             // 
-            // comboBoxBetPlayer
+            // columnHeader2
             // 
-            this.comboBoxBetPlayer.FormattingEnabled = true;
-            this.comboBoxBetPlayer.Location = new System.Drawing.Point(239, 185);
-            this.comboBoxBetPlayer.Name = "comboBoxBetPlayer";
-            this.comboBoxBetPlayer.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxBetPlayer.TabIndex = 12;
+            this.columnHeader2.Text = "规则条数";
             // 
-            // label12
+            // tabPage2
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 188);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(214, 24);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "闲家赢,下一次下注";
+            this.tabPage2.Controls.Add(this.btnDel2);
+            this.tabPage2.Controls.Add(this.btnMod2);
+            this.tabPage2.Controls.Add(this.btnAdd2);
+            this.tabPage2.Controls.Add(this.BetListView2);
+            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(791, 480);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "二局结果下注";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // BetValueDrawGame
+            // btnDel2
             // 
-            this.BetValueDrawGame.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.BetValueDrawGame.Location = new System.Drawing.Point(436, 234);
-            this.BetValueDrawGame.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.BetValueDrawGame.Name = "BetValueDrawGame";
-            this.BetValueDrawGame.Size = new System.Drawing.Size(184, 35);
-            this.BetValueDrawGame.TabIndex = 18;
+            this.btnDel2.Location = new System.Drawing.Point(682, 416);
+            this.btnDel2.Name = "btnDel2";
+            this.btnDel2.Size = new System.Drawing.Size(94, 42);
+            this.btnDel2.TabIndex = 6;
+            this.btnDel2.Text = "删除";
+            this.btnDel2.UseVisualStyleBackColor = true;
+            this.btnDel2.Click += new System.EventHandler(this.BtnDel2_Click);
             // 
-            // label13
+            // btnMod2
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(367, 241);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(58, 24);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "金额";
+            this.btnMod2.Location = new System.Drawing.Point(582, 416);
+            this.btnMod2.Name = "btnMod2";
+            this.btnMod2.Size = new System.Drawing.Size(94, 42);
+            this.btnMod2.TabIndex = 5;
+            this.btnMod2.Text = "修改";
+            this.btnMod2.UseVisualStyleBackColor = true;
+            this.btnMod2.Click += new System.EventHandler(this.BtnMod2_Click);
             // 
-            // comboBoxBetDrawGame
+            // btnAdd2
             // 
-            this.comboBoxBetDrawGame.FormattingEnabled = true;
-            this.comboBoxBetDrawGame.Location = new System.Drawing.Point(239, 234);
-            this.comboBoxBetDrawGame.Name = "comboBoxBetDrawGame";
-            this.comboBoxBetDrawGame.Size = new System.Drawing.Size(121, 32);
-            this.comboBoxBetDrawGame.TabIndex = 16;
+            this.btnAdd2.Location = new System.Drawing.Point(482, 416);
+            this.btnAdd2.Name = "btnAdd2";
+            this.btnAdd2.Size = new System.Drawing.Size(94, 42);
+            this.btnAdd2.TabIndex = 4;
+            this.btnAdd2.Text = "添加";
+            this.btnAdd2.UseVisualStyleBackColor = true;
+            this.btnAdd2.Click += new System.EventHandler(this.BtnAdd2_Click);
             // 
-            // label14
+            // BetListView2
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(43, 237);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(190, 24);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "平局,下一次下注";
+            this.BetListView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.BetListView2.FullRowSelect = true;
+            this.BetListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.BetListView2.Location = new System.Drawing.Point(6, 6);
+            this.BetListView2.MultiSelect = false;
+            this.BetListView2.Name = "BetListView2";
+            this.BetListView2.Size = new System.Drawing.Size(779, 393);
+            this.BetListView2.TabIndex = 0;
+            this.BetListView2.UseCompatibleStateImageBehavior = false;
+            this.BetListView2.View = System.Windows.Forms.View.Details;
+            this.BetListView2.DoubleClick += new System.EventHandler(this.BetListView2_DoubleClick);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "倒数第二局";
+            this.columnHeader4.Width = 100;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "倒数第一局";
+            this.columnHeader5.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "规则条数";
+            this.columnHeader6.Width = 120;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.btnDel3);
+            this.tabPage3.Controls.Add(this.btnMod3);
+            this.tabPage3.Controls.Add(this.btnAdd3);
+            this.tabPage3.Controls.Add(this.BetListView3);
+            this.tabPage3.Location = new System.Drawing.Point(8, 39);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(791, 480);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "三局结果下注";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnDel3
+            // 
+            this.btnDel3.Location = new System.Drawing.Point(685, 419);
+            this.btnDel3.Name = "btnDel3";
+            this.btnDel3.Size = new System.Drawing.Size(94, 42);
+            this.btnDel3.TabIndex = 3;
+            this.btnDel3.Text = "删除";
+            this.btnDel3.UseVisualStyleBackColor = true;
+            this.btnDel3.Click += new System.EventHandler(this.BtnDel3_Click);
+            // 
+            // btnMod3
+            // 
+            this.btnMod3.Location = new System.Drawing.Point(585, 419);
+            this.btnMod3.Name = "btnMod3";
+            this.btnMod3.Size = new System.Drawing.Size(94, 42);
+            this.btnMod3.TabIndex = 2;
+            this.btnMod3.Text = "修改";
+            this.btnMod3.UseVisualStyleBackColor = true;
+            this.btnMod3.Click += new System.EventHandler(this.BtnMod3_Click);
+            // 
+            // btnAdd3
+            // 
+            this.btnAdd3.Location = new System.Drawing.Point(485, 419);
+            this.btnAdd3.Name = "btnAdd3";
+            this.btnAdd3.Size = new System.Drawing.Size(94, 42);
+            this.btnAdd3.TabIndex = 1;
+            this.btnAdd3.Text = "添加";
+            this.btnAdd3.UseVisualStyleBackColor = true;
+            this.btnAdd3.Click += new System.EventHandler(this.BtnAdd3_Click);
+            // 
+            // BetListView3
+            // 
+            this.BetListView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader10,
+            this.columnHeader11});
+            this.BetListView3.FullRowSelect = true;
+            this.BetListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.BetListView3.Location = new System.Drawing.Point(3, 3);
+            this.BetListView3.MultiSelect = false;
+            this.BetListView3.Name = "BetListView3";
+            this.BetListView3.Size = new System.Drawing.Size(779, 410);
+            this.BetListView3.TabIndex = 0;
+            this.BetListView3.UseCompatibleStateImageBehavior = false;
+            this.BetListView3.View = System.Windows.Forms.View.Details;
+            this.BetListView3.DoubleClick += new System.EventHandler(this.BetListView3_DoubleClick);
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "倒数第三局";
+            this.columnHeader8.Width = 80;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "倒数第二局";
+            this.columnHeader9.Width = 80;
+            // 
+            // columnHeader10
+            // 
+            this.columnHeader10.Text = "倒数第一局";
+            this.columnHeader10.Width = 80;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "规则条数";
+            this.columnHeader11.Width = 120;
+            // 
+            // comboBoxMode
+            // 
+            this.comboBoxMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMode.FormattingEnabled = true;
+            this.comboBoxMode.Location = new System.Drawing.Point(198, 56);
+            this.comboBoxMode.Name = "comboBoxMode";
+            this.comboBoxMode.Size = new System.Drawing.Size(201, 32);
+            this.comboBoxMode.TabIndex = 6;
             // 
             // CfgForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 692);
+            this.ClientSize = new System.Drawing.Size(870, 906);
             this.Controls.Add(this.groupBoxBet);
             this.Controls.Add(this.groupBoxChip);
             this.Controls.Add(this.btnCancle);
@@ -434,9 +487,10 @@
             this.groupBoxChip.PerformLayout();
             this.groupBoxBet.ResumeLayout(false);
             this.groupBoxBet.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValueBanker)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValuePlayer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BetValueDrawGame)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -456,24 +510,32 @@
         private System.Windows.Forms.ComboBox CbChip2;
         private System.Windows.Forms.ComboBox CbChip1;
         private System.Windows.Forms.GroupBox groupBoxBet;
-        private System.Windows.Forms.ComboBox comboBoxReuslt3;
-        private System.Windows.Forms.ComboBox comboBoxReuslt2;
-        private System.Windows.Forms.ComboBox comboBoxReuslt1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox comboBoxMode;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ListView BetListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ListView BetListView2;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.ListView BetListView3;
+        private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.Button btnDel3;
+        private System.Windows.Forms.Button btnMod3;
+        private System.Windows.Forms.Button btnAdd3;
+        private System.Windows.Forms.Button btnDel2;
+        private System.Windows.Forms.Button btnMod2;
+        private System.Windows.Forms.Button btnAdd2;
+        private System.Windows.Forms.Button btnDel1;
+        private System.Windows.Forms.Button btnMod1;
+        private System.Windows.Forms.Button btnAdd1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckBox checkBoxWatch;
-        private System.Windows.Forms.NumericUpDown BetValueDrawGame;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBoxBetDrawGame;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.NumericUpDown BetValuePlayer;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBoxBetPlayer;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.NumericUpDown BetValueBanker;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBoxBetBanker;
-        private System.Windows.Forms.Label label9;
     }
 }

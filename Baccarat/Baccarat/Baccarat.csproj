@@ -73,12 +73,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractOperator.cs" />
+    <Compile Include="BetRule1AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetRule1AddForm.Designer.cs">
+      <DependentUpon>BetRule1AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BetRule2AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetRule2AddForm.Designer.cs">
+      <DependentUpon>BetRule2AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BetRule3AddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetRule3AddForm.Designer.cs">
+      <DependentUpon>BetRule3AddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BetRuleAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BetRuleAddForm.Designer.cs">
+      <DependentUpon>BetRuleAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CfgForm.cs">
-		<SubType>Form</SubType>
-	</Compile>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CfgForm.Designer.cs">
       <DependentUpon>CfgForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommonFunction.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="JinShaAgOperator.cs" />
     <Compile Include="LogForm.cs">
       <SubType>Form</SubType>
@@ -111,6 +137,18 @@
     <Compile Include="Tools\BitmapCapture.cs" />
     <Compile Include="Tools\ImageOperator.cs" />
     <Compile Include="Tools\WinApi.cs" />
+    <EmbeddedResource Include="BetRule1AddForm.resx">
+      <DependentUpon>BetRule1AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BetRule2AddForm.resx">
+      <DependentUpon>BetRule2AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BetRule3AddForm.resx">
+      <DependentUpon>BetRule3AddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BetRuleAddForm.resx">
+      <DependentUpon>BetRuleAddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CfgForm.resx">
       <DependentUpon>CfgForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -22,6 +22,7 @@ namespace Baccarat
         GAME_END        //本局结束
     }
 
+    [Serializable]
     public class GameResultInfo
     {
         public GameResult result { get; set; }
@@ -72,7 +73,7 @@ namespace Baccarat
 
         private void Jinsha_Init()
         {
-            MainSiteInfo mainSiteInfo = new MainSiteInfo("金沙", ESite.SIET_JINSHA, "./金沙.ini", "https://m.83361199.com");
+            MainSiteInfo mainSiteInfo = new MainSiteInfo("金沙", ESite.SIET_JINSHA, "./金沙.xml", "https://m.83361199.com");
             mainSiteInfo.subSites = new Dictionary<ESubSite, SubSiteInfo>();
             mainSiteInfo.subSites[ESubSite.AG_SITE] = new SubSiteInfo("AG女优厅", ESubSite.AG_SITE);
             mainSites[ESite.SIET_JINSHA] = mainSiteInfo;

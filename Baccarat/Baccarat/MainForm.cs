@@ -113,6 +113,22 @@ namespace Baccarat
             }
         }
 
+        delegate void StopDelegate();
+
+        public void Stop()
+        {
+            if(InvokeRequired)
+            {
+                Invoke(new StopDelegate(Stop));
+            }
+            else
+            {
+                addLog("自动停止");
+                btnStart.Enabled = true;
+                btnStop.Enabled = false;
+            }
+        }
+
         public void BrowserClick(Int32 x, Int32 y)
         {
             InternalBrowserClickDelegate d = new InternalBrowserClickDelegate(InternalBrowserClick);
