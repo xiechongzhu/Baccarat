@@ -36,7 +36,11 @@ namespace Baccarat
             siteForm.ShowDialog();
             mainSite = siteForm.mainSite;
             browser.Load(siteForm.siteUrl);
-            Text = "百家乐-" + siteForm.siteUrl;
+            Text = "百家乐";
+            List<SubSiteInfo> subSiteInfos = SiteInfo.Instance().GetSubSites(mainSite);
+            cbSubSite.DisplayMember = "siteName";
+            cbSubSite.ValueMember = "site";
+            cbSubSite.DataSource = subSiteInfos;
         }
 
         private ChromiumWebBrowser browser = new ChromiumWebBrowser();
@@ -56,13 +60,6 @@ namespace Baccarat
         {
             WindowState = FormWindowState.Normal;
             Size = new Size(800, 600);
-            SubSiteForm subSiteForm = new SubSiteForm();
-            subSiteForm.SetMainSite(mainSite);
-            if(subSiteForm.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-            subSite = subSiteForm.GetSubSite();
             switch (mainSite)
             {
                 case ESite.SIET_JINSHA:
@@ -82,6 +79,8 @@ namespace Baccarat
                 ImageCapTimer.Start();
                 btnStart.Enabled = false;
                 btnStop.Enabled = true;
+                btnSetting.Enabled = false;
+                cbSubSite.Enabled = false;
             }
         }
 
@@ -91,6 +90,8 @@ namespace Baccarat
             ImageCapTimer.Stop();
             btnStart.Enabled = true;
             btnStop.Enabled = false;
+            btnSetting.Enabled = true;
+            cbSubSite.Enabled = true;
         }
 
         private void ImageCapTimer_Tick(object sender, EventArgs e)
@@ -126,6 +127,9 @@ namespace Baccarat
                 addLog("自动停止");
                 btnStart.Enabled = true;
                 btnStop.Enabled = false;
+                btnSetting.Enabled = true;
+                cbSubSite.Enabled = true;
+                MessageBox.Show("程序自动停止", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -158,8 +162,13 @@ namespace Baccarat
 
         private void BtnSetting_Click(object sender, EventArgs e)
         {
-            CfgForm cfgForm = new CfgForm(mainSite);
+            CfgForm cfgForm = new CfgForm(mainSite, subSite);
             cfgForm.ShowDialog();
+        }
+
+        private void CbSubSite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            subSite = (ESubSite)cbSubSite.SelectedValue;
         }
     }
 }

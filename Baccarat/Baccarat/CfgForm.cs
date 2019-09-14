@@ -14,11 +14,13 @@ namespace Baccarat
     public partial class CfgForm : Form
     {
         private ESite mainSite;
+        private ESubSite subSite;
         List<Object> betModeList = new List<object> { new { Title = "一局结果下注", Value = 1},
                 new { Title = "二局结果下注", Value = 2},  new { Title = "三局结果下注", Value = 3}};
-        public CfgForm(ESite mainSite)
+        public CfgForm(ESite mainSite, ESubSite subSite)
         {
             this.mainSite = mainSite;
+            this.subSite = subSite;
             InitializeComponent();
             InitControlls();
         }
@@ -116,14 +118,14 @@ namespace Baccarat
 
         private void ReadConfig()
         {
-            String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite);
+            String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite, subSite);
             Config.Instance().Read(configFileName);
             CbChip1.Text = Config.Instance().chips[0].ToString();
             CbChip2.Text = Config.Instance().chips[1].ToString();
             CbChip3.Text = Config.Instance().chips[2].ToString();
             CbChip4.Text = Config.Instance().chips[3].ToString();
             CbChip5.Text = Config.Instance().chips[4].ToString();
-            comboBoxMode.SelectedValue = Config.Instance().betMode;
+            comboBoxMode.SelectedValue = Config.Instance().betMode == 0 ? 1: Config.Instance().betMode;
             BetListView1.Items.Clear();
             BetListView2.Items.Clear();
             BetListView3.Items.Clear();
@@ -154,7 +156,7 @@ namespace Baccarat
 
         private void WriteConfig()
         {
-            String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite);
+            String configFileName = SiteInfo.Instance().GetConfigFileName(mainSite, subSite);
             Config.Instance().Write(configFileName);
         }
 

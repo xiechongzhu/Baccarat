@@ -32,12 +32,13 @@
             this.panelTool = new System.Windows.Forms.Panel();
             this.ContexMenuTool = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuItemCapture = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.btnLog = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.panelWeb = new System.Windows.Forms.Panel();
             this.ImageCapTimer = new System.Windows.Forms.Timer(this.components);
-            this.btnSetting = new System.Windows.Forms.Button();
+            this.cbSubSite = new System.Windows.Forms.ComboBox();
             this.panelTool.SuspendLayout();
             this.ContexMenuTool.SuspendLayout();
             this.SuspendLayout();
@@ -45,13 +46,14 @@
             // panelTool
             // 
             this.panelTool.ContextMenuStrip = this.ContexMenuTool;
+            this.panelTool.Controls.Add(this.cbSubSite);
             this.panelTool.Controls.Add(this.btnSetting);
             this.panelTool.Controls.Add(this.btnLog);
             this.panelTool.Controls.Add(this.btnStop);
             this.panelTool.Controls.Add(this.btnStart);
             this.panelTool.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTool.Location = new System.Drawing.Point(0, 0);
-            this.panelTool.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelTool.Margin = new System.Windows.Forms.Padding(6);
             this.panelTool.Name = "panelTool";
             this.panelTool.Size = new System.Drawing.Size(1574, 56);
             this.panelTool.TabIndex = 0;
@@ -71,10 +73,20 @@
             this.MenuItemCapture.Text = "截图";
             this.MenuItemCapture.Click += new System.EventHandler(this.MenuItemCapture_Click);
             // 
+            // btnSetting
+            // 
+            this.btnSetting.Location = new System.Drawing.Point(542, 4);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(131, 47);
+            this.btnSetting.TabIndex = 3;
+            this.btnSetting.Text = "设置";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.BtnSetting_Click);
+            // 
             // btnLog
             // 
-            this.btnLog.Location = new System.Drawing.Point(498, 7);
-            this.btnLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLog.Location = new System.Drawing.Point(701, 7);
+            this.btnLog.Margin = new System.Windows.Forms.Padding(4);
             this.btnLog.Name = "btnLog";
             this.btnLog.Size = new System.Drawing.Size(112, 44);
             this.btnLog.TabIndex = 2;
@@ -85,8 +97,8 @@
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(170, 4);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnStop.Location = new System.Drawing.Point(373, 4);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(6);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(150, 46);
             this.btnStop.TabIndex = 1;
@@ -96,8 +108,8 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(8, 4);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnStart.Location = new System.Drawing.Point(211, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(6);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(150, 46);
             this.btnStart.TabIndex = 0;
@@ -118,15 +130,15 @@
             // 
             this.ImageCapTimer.Tick += new System.EventHandler(this.ImageCapTimer_Tick);
             // 
-            // btnSetting
+            // cbSubSite
             // 
-            this.btnSetting.Location = new System.Drawing.Point(339, 4);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(131, 47);
-            this.btnSetting.TabIndex = 3;
-            this.btnSetting.Text = "设置";
-            this.btnSetting.UseVisualStyleBackColor = true;
-            this.btnSetting.Click += new System.EventHandler(this.BtnSetting_Click);
+            this.cbSubSite.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubSite.FormattingEnabled = true;
+            this.cbSubSite.Location = new System.Drawing.Point(12, 4);
+            this.cbSubSite.Name = "cbSubSite";
+            this.cbSubSite.Size = new System.Drawing.Size(190, 32);
+            this.cbSubSite.TabIndex = 4;
+            this.cbSubSite.SelectedIndexChanged += new System.EventHandler(this.CbSubSite_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -136,7 +148,7 @@
             this.Controls.Add(this.panelWeb);
             this.Controls.Add(this.panelTool);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
@@ -160,6 +172,7 @@
         private System.Windows.Forms.Timer ImageCapTimer;
         private System.Windows.Forms.Button btnLog;
         private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.ComboBox cbSubSite;
     }
 }
 

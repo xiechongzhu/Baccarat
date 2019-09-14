@@ -52,17 +52,15 @@ namespace Baccarat
 
     class MainSiteInfo
     {
-        public MainSiteInfo(String siteName, ESite site, String configFile, String url)
+        public MainSiteInfo(String siteName, ESite site, String url)
         {
             this.siteName = siteName;
             this.site = site;
-            this.configFile = configFile;
             this.url = url;
         }
         public String siteName { get; set; }
         public ESite site { get; set; }
         public Dictionary<ESubSite, SubSiteInfo> subSites { get; set; }
-        public String configFile { get; set; }
         public String url;
     }
 
@@ -73,7 +71,7 @@ namespace Baccarat
 
         private void Jinsha_Init()
         {
-            MainSiteInfo mainSiteInfo = new MainSiteInfo("金沙", ESite.SIET_JINSHA, "./金沙.xml", "https://m.83361199.com");
+            MainSiteInfo mainSiteInfo = new MainSiteInfo("金沙", ESite.SIET_JINSHA, "https://m.83361199.com");
             mainSiteInfo.subSites = new Dictionary<ESubSite, SubSiteInfo>();
             mainSiteInfo.subSites[ESubSite.AG_SITE] = new SubSiteInfo("AG女优厅", ESubSite.AG_SITE);
             mainSites[ESite.SIET_JINSHA] = mainSiteInfo;
@@ -105,9 +103,9 @@ namespace Baccarat
             return mainSites[mainSite].subSites.Values.ToList<SubSiteInfo>();
         }
 
-        public String GetConfigFileName(ESite mainSite)
+        public String GetConfigFileName(ESite mainSite, ESubSite subSite)
         {
-            return mainSites[mainSite].configFile;
+            return mainSites[mainSite].siteName + "-" + mainSites[mainSite].subSites[subSite].siteName + ".xml";
         }
     }
 }
