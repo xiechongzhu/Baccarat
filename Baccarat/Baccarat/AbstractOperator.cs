@@ -13,9 +13,13 @@ namespace Baccarat
     {
         protected GameResult gameResult = GameResult.RESULT_UNKNOW;
         protected GameState gameState = GameState.GAME_UNKNOW;
-        protected bool startBet = false;
-        bool isRunning = false;
+        bool isRunning;
+        bool isNewRound;
+        Int32 currentBetIndex;
+        List<BetRule> betRules;
         List<GameResult> gameResultList = new List<GameResult>();
+        GameResult betResult;
+        Int32[] betCoins;
 
         public AbstractOperator(MainForm mainForm)
         {
@@ -25,6 +29,7 @@ namespace Baccarat
         public void Start()
         {
             isRunning = true;
+            isNewRound = true;
         }
 
         public void Reset()
@@ -53,7 +58,7 @@ namespace Baccarat
             SendImageDelegate d = (SendImageDelegate)asyncResult.AsyncDelegate;
             Tuple<GameState, GameResult> retVal = d.EndInvoke(result);
             GameState currentGameState = retVal.Item1;
-            GameResult currentGameResult = retVal.Item2;
+            gameResult = retVal.Item2;
             if (isRunning)
             {
                 switch(gameState)
@@ -69,16 +74,19 @@ namespace Baccarat
                     case GameState.GAME_START:
                         if(currentGameState == GameState.GAME_UNKNOW)
                         {
-                            SendLog("可以开始下注了");
                             gameState = GameState.GAME_GOING;
-                            Bet();
+                            PreBet();
+                            if (betCoins != null)
+                            {
+                                Bet(betResult, betCoins);
+                            }
                         }
                         break;
                     case GameState.GAME_GOING:
                         if(currentGameState == GameState.GAME_END)
                         {
                             String logString = "本局结束,结果:";
-                            switch (currentGameResult)
+                            switch (gameResult)
                             {
                                 case GameResult.RESULT_UNKNOW:
                                     logString += "未知";
@@ -94,12 +102,37 @@ namespace Baccarat
                                     break;
                             }
                             SendLog(logString);
-                            if (currentGameResult != GameResult.RESULT_UNKNOW && currentGameResult != GameResult.DRAW_GAME)
+                            if (gameResult != GameResult.RESULT_UNKNOW && gameResult != GameResult.DRAW_GAME)
                             {
-                                gameResultList.Add(currentGameResult);
+                                gameResultList.Add(gameResult);
                             }
                             gameState = GameState.GAME_END;
-                            //在这里添加下注逻辑
+                            if (betRules != null && betRules.Count > 0)
+                            {
+                                if (betResult != gameResult)
+                                {
+                                    SendLog("你输了");
+                                }
+                            }
+                            if(betRules == null || betRules.Count == 0 || (currentBetIndex >= betRules.Count || betResult == gameResult))
+                            {
+                                isNewRound = true;
+                                if (gameResultList.Count > Config.Instance().betMode)
+                                {
+                                    if ((betRules == null || betRules.Count == 0))
+                                    {
+                                        SendLog("没有配置下注规则，重新开始匹配");
+                                    }
+                                    else if (betResult == gameResult)
+                                    {
+                                        SendLog("你赢了，重新开始匹配");
+                                    }
+                                    else if (currentBetIndex >= betRules.Count)
+                                    {
+                                        SendLog("规则已用完，重新开始匹配");
+                                    }
+                                }
+                            }
                         }
                         break;
                     default:
@@ -108,8 +141,74 @@ namespace Baccarat
             }
         }
 
+        protected void PreBet()
+        {
+            betCoins = null;
+            if (isNewRound)
+            {
+                betRules = null;
+                Int32 mode = Config.Instance().betMode;
+                if (mode == 1 && gameResultList.Count >= 1)
+                {
+                    List<GameRule1> list = Config.Instance().gameRule1;
+                    foreach (GameRule1 rule1 in list)
+                    {
+                        if(rule1.result == gameResultList[gameResultList.Count - 1])
+                        {
+                            betRules = rule1.rules;
+                            break;
+                        }
+                    }
+                }
+                else if (mode == 2 && gameResultList.Count >= 2)
+                {
+                    List<GameRule2> list = Config.Instance().gameRule2;
+                    foreach (GameRule2 rule2 in list)
+                    {
+                        if (rule2.result1 == gameResultList[gameResultList.Count - 1] && rule2.result2 == gameResultList[gameResultList.Count - 2])
+                        {
+                            betRules = rule2.rules;
+                            break;
+                        }
+                    }
+                }
+                else if (mode == 3 && gameResultList.Count >= 3)
+                {
+                    List<GameRule3> list = Config.Instance().gameRule3;
+                    foreach (GameRule3 rule3 in list)
+                    {
+                        if (rule3.result1 == gameResultList[gameResultList.Count - 1] && rule3.result2 == gameResultList[gameResultList.Count - 2]
+                            && rule3.result3 == gameResultList[gameResultList.Count - 3])
+                        {
+                            betRules = rule3.rules;
+                            break;
+                        }
+                    }
+                }
+                if(betRules != null && betRules.Count > 0)
+                {
+                    SendLog("匹配到规则,开始循环下注");
+                    currentBetIndex = 0;
+                    isNewRound = false;
+                    betCoins = CommonFunction.CalclutionBetIcons(Config.Instance().chips, betRules[currentBetIndex].betValue);
+                    betResult = betRules[currentBetIndex].result;
+                    String strLog = String.Format("下注:{0}, 金额:{1}", CommonFunction.GameResultToString(betResult), betRules[currentBetIndex].betValue);
+                    SendLog(strLog);
+                    currentBetIndex++;
+                }
+            }
+            else
+            {
+                betCoins = CommonFunction.CalclutionBetIcons(Config.Instance().chips, betRules[currentBetIndex].betValue);
+                betResult = betRules[currentBetIndex].result;
+                String strLog = String.Format("下注:{0}, 金额:{1}", CommonFunction.GameResultToString(betResult), betRules[currentBetIndex].betValue);
+                SendLog(strLog);
+                currentBetIndex++;
+            }
+        }
+
         private MainForm mainForm;
-        protected abstract void Bet();
+        protected abstract void Bet(GameResult gameResult, Int32[] coins);
         public abstract Tuple<GameState, GameResult> InternalParseImage(Image image);
         protected void BrowserClick(Int32 x, Int32 y)
         {

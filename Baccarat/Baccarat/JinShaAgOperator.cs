@@ -30,7 +30,7 @@ namespace Baccarat
             betPositions[GameResult.PLAYER_WIN] = new Point(413, 365);
         }
 
-        protected override void Bet()
+        protected override void Bet(GameResult gameResult, Int32[] coins)
         {
             
         }

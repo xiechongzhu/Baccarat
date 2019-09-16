@@ -80,7 +80,7 @@ namespace Baccarat
             return true;
         }
 
-        public void Read(String filename)
+        public bool Read(String filename)
         {
             System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Config));
             System.IO.StreamReader file = null;
@@ -88,17 +88,18 @@ namespace Baccarat
             {
                 file = new System.IO.StreamReader(filename);
                 _instance = (Config)reader.Deserialize(file);
+                return true;
             }
             catch(Exception)
+            {
+                return false;
+            }
+            finally
             {
                 if (file != null)
                 {
                     file.Close();
                 }
-            }
-            if (file != null)
-            {
-                file.Close();
             }
         }
     }

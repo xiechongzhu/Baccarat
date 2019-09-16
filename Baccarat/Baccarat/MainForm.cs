@@ -60,6 +60,11 @@ namespace Baccarat
         {
             WindowState = FormWindowState.Normal;
             Size = new Size(800, 600);
+            if (!Config.Instance().Read(SiteInfo.Instance().GetConfigFileName(mainSite, subSite)))
+            {
+                MessageBox.Show("请先设置参数", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             switch (mainSite)
             {
                 case ESite.SIET_JINSHA:

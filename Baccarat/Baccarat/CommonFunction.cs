@@ -61,5 +61,34 @@ namespace Baccarat
                 ms.Close();
             }
         }
+
+        public static Int32[] CalclutionBetIcons(Int32[] chips, Int32 value)
+        {
+            Int32 restValue = value;
+            Int32[] icons = new int[chips.Length];
+            while(true)
+            {
+                Int32 index = -1;
+                Int32 chip = 0;
+                for (Int32 i = 0; i < chips.Length; ++i)
+                {
+                    if (restValue >= chips[i])
+                    {
+                        if(chips[i] > chip)
+                        {
+                            chip = chips[i];
+                            index = i;
+                        }
+                    }
+                }
+                if(index < 0)
+                {
+                    break;
+                }
+                icons[index] = restValue / chips[index];
+                restValue = restValue % chips[index];
+            }
+            return icons;
+        }
     }
 }
