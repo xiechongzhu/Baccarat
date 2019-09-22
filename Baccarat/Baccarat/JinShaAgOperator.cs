@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Baccarat
@@ -12,15 +13,16 @@ namespace Baccarat
     {
         private Dictionary<Int32, Point> chipPositions = new Dictionary<int, Point>();
         private Dictionary<GameResult, Point> betPositions = new Dictionary<GameResult, Point>();
+        private Point pointOk;
 
         public JinShaAgOperator(MainForm mainForm) : base(mainForm)
         {
             //筹码位置
-            chipPositions[10] = new Point(600, 400);
-            chipPositions[50] = new Point(635, 400);
-            chipPositions[100] = new Point(670, 400);
-            chipPositions[500] = new Point(705, 400);
-            chipPositions[1000] = new Point(740, 400);
+            chipPositions[0] = new Point(600, 400);
+            chipPositions[1] = new Point(635, 400);
+            chipPositions[2] = new Point(670, 400);
+            chipPositions[3] = new Point(705, 400);
+            chipPositions[4] = new Point(740, 400);
 
             //下注“平局”的点击区域
             betPositions[GameResult.DRAW_GAME] = new Point(411, 322);
@@ -28,11 +30,24 @@ namespace Baccarat
             betPositions[GameResult.BANKER_WIN] = new Point(414, 339);
             //下注“闲家”的点击区域
             betPositions[GameResult.PLAYER_WIN] = new Point(413, 365);
+
+            //点击确定的位置
+            pointOk = new Point(420, 400);
         }
 
         protected override void Bet(GameResult gameResult, Int32[] coins)
         {
-            
+            Point point = betPositions[gameResult];
+            for (Int32 index = 0; index < coins.Length; ++index)
+            {
+                for(Int32 count = 0; count < coins[index]; ++count)
+                {
+                    BrowserClick(chipPositions[index].X, chipPositions[index].Y);
+                    BrowserClick(point.X, point.Y);
+                    Thread.Sleep(500);
+                }
+            }
+            BrowserClick(pointOk.X, pointOk.Y);
         }
 
         public override Tuple<GameState, GameResult> InternalParseImage(Image image)
