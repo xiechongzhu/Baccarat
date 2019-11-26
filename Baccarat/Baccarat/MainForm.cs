@@ -54,6 +54,7 @@ namespace Baccarat
             {
                 image.Save(dialog.FileName);
             }
+            image.Dispose();
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
